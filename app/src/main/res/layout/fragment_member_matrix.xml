@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="org.sdfw.biometric.viewmodel.MemberMatrixViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/fragment_members"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/layout_margin">
+
+        <TextView
+            android:id="@+id/txt_empty"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spn_center"
+            tools:text="No center found" />
+
+        <TextView
+            android:id="@+id/lbl_branch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_margin"
+            android:text="@string/branch"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintEnd_toStartOf="@+id/txt_branch"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Branch:" />
+
+        <TextView
+            android:id="@+id/txt_branch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/view_margin_s"
+            android:layout_marginEnd="@dimen/view_margin"
+            android:text="@{@string/branch_title(model.matrix.branchName, model.matrix.branchId)}"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toEndOf="@+id/lbl_branch"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Uttara" />
+
+        <TextView
+            android:id="@+id/lbl_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_margin"
+            android:text="@string/center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintBottom_toBottomOf="@id/spn_center"
+            app:layout_constraintEnd_toStartOf="@id/spn_center"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/spn_center"
+            app:layout_constraintVertical_bias="0.20" />
+
+        <fr.ganfra.materialspinner.MaterialSpinner
+            android:id="@+id/spn_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/view_margin"
+            android:selection="@={model.matrix.fields.centerIdIndex}"
+            app:layout_constraintStart_toEndOf="@id/lbl_center"
+            app:layout_constraintTop_toBottomOf="@id/txt_branch"
+            app:ms_enableFloatingLabel="false"
+            app:ms_hint="@string/select_center" />
+
+        <TextView
+            android:id="@+id/lbl_members"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/view_margin_l"
+            android:text="@string/members"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spn_center" />
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/view_margin_l"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lbl_members">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rcl_member"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:padding="@dimen/grid_spacing"
+                android:visibility="invisible"
+                app:data="@{model.matrix.members}" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <TextView
+            android:id="@+id/txt_legends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/legends"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_fingerprint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/view_margin"
+            android:layout_marginEnd="@dimen/layout_margin"
+            android:drawableStart="@drawable/ic_check"
+            android:drawablePadding="@dimen/view_margin_s"
+            android:drawableTint="@color/lightRed"
+            android:gravity="center_vertical"
+            android:text="@string/biometric"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/txt_legends" />
+
+        <TextView
+            android:id="@+id/txt_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/view_margin"
+            android:layout_marginEnd="@dimen/layout_margin"
+            android:drawableStart="@drawable/ic_check"
+            android:drawablePadding="@dimen/view_margin_s"
+            android:drawableTint="@color/lightGreen"
+            android:gravity="center_vertical"
+            android:text="@string/member_image"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/txt_fingerprint" />
+
+        <TextView
+            android:id="@+id/txt_nid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/view_margin"
+            android:layout_marginEnd="@dimen/layout_margin"
+            android:drawableStart="@drawable/ic_check"
+            android:drawablePadding="@dimen/view_margin_s"
+            android:drawableTint="@color/lightBlue"
+            android:gravity="center_vertical"
+            android:text="@string/voter_id"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/txt_image" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.7" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

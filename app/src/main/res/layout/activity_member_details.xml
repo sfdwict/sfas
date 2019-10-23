@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="model"
+            type="org.sdfw.biometric.viewmodel.MemberDetailsViewModel" />
+    </data>
+
+    <ScrollView
+        android:id="@+id/scr_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.MemberDetailsActivity">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/form_layout_left_margin" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/form_layout_right_margin" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageViewProfile"
+                android:layout_width="@dimen/details_profile_pic_width"
+                android:layout_height="@dimen/details_profile_pic_height"
+                android:layout_marginTop="@dimen/layout_margin"
+                android:contentDescription="@string/profile_image"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:civ_border_color="@android:color/darker_gray"
+                app:civ_border_width="@dimen/circular_image_border_width"
+                app:imgData="@{model.memberDetails.fields.image}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_image_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:error="@{model.memberDetails.imageError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewProfile" />
+
+            <TextView
+                android:id="@+id/txt_member_status"
+                android:layout_width="@dimen/badge_dimen"
+                android:layout_height="@dimen/badge_dimen"
+                android:background="@drawable/bg_badge"
+                android:gravity="center"
+                android:text="@{model.memberDetails.fields.verificationStatus}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+                android:textStyle="bold"
+                android:visibility="@{model.memberDetails.fields.verificationStatus != null ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewProfile"
+                app:layout_constraintEnd_toEndOf="@id/imageViewProfile"
+                tools:text="P" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_center_no"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin"
+                app:error="@{model.memberDetails.centerIdError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewProfile">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_center_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/center_no"
+                    android:text="@={model.memberDetails.fields.centerId}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_member_no"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:error="@{model.memberDetails.memberIdError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_center_no">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_member_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/member_no"
+                    android:inputType="numberDecimal"
+                    android:text="@={model.memberDetails.fields.memberId}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_group_no"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:error="@{model.memberDetails.groupIdError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_member_no">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_group_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/group_no"
+                    android:inputType="numberDecimal"
+                    android:text="@={model.memberDetails.fields.groupId}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_member_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:error="@{model.memberDetails.memberNameError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_group_no">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_member_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/member_name"
+                    android:inputType="textPersonName"
+                    android:text="@={model.memberDetails.fields.memberName}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spn_savers_only"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                android:entries="@array/arr_member_type"
+                android:selection="@={model.memberDetails.saversOnlyFlagIndex}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_member_name"
+                app:ms_hint="@string/member_type">
+
+            </fr.ganfra.materialspinner.MaterialSpinner>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_dob"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:error="@{model.memberDetails.dateOfBirthError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/spn_savers_only">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="@string/dob"
+                    android:inputType="textNoSuggestions"
+                    android:text="@={model.memberDetails.dateOfBirth}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_age"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_dob">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/age"
+                    android:inputType="textPersonName"
+                    android:text="@{model.memberDetails.age}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_parent_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:error="@{model.memberDetails.spouseNameError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_age">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_parent_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/spouse_name"
+                    android:inputType="textPersonName"
+                    android:text="@={model.memberDetails.fields.spouseName}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_nominee_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:error="@{model.memberDetails.successorError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_parent_name">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_nominee_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/nominee_name"
+                    android:inputType="textPersonName"
+                    android:text="@={model.memberDetails.fields.successor}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_father_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:error="@{model.memberDetails.fatherNameError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_nominee_name">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_father_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/father_name"
+                    android:inputType="textPersonName"
+                    android:text="@={model.memberDetails.fields.fatherName}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_mother_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:error="@{model.memberDetails.motherNameError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_father_name">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_mother_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/mother_name"
+                    android:inputType="textPersonName"
+                    android:text="@={model.memberDetails.fields.motherName}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_nid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:error="@{model.memberDetails.voterIdError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_mother_name">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_nid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/nid_no"
+                    android:inputType="numberDecimal"
+                    android:text="@={model.memberDetails.fields.voterId}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_mobile_no"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:error="@{model.memberDetails.mobileNoError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_nid">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_mobile_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/mobile_no"
+                    android:inputType="phone"
+                    android:text="@={model.memberDetails.fields.mobileNo}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:error="@{model.memberDetails.addressError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_mobile_no">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/address"
+                    android:inputType="textPostalAddress"
+                    android:text="@={model.memberDetails.fields.address}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spn_sex"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                android:entries="@array/arr_sex"
+                android:selection="@={model.memberDetails.sexIndex}"
+                app:error="@{model.memberDetails.sexError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_address"
+                app:ms_enableErrorLabel="true"
+                app:ms_enableFloatingLabel="true"
+                app:ms_hint="@string/sex">
+
+            </fr.ganfra.materialspinner.MaterialSpinner>
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spn_marital"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                android:entries="@array/arr_marital"
+                android:selection="@={model.memberDetails.maritalStatusIndex}"
+                app:error="@{model.memberDetails.maritaLStatusError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/spn_sex"
+                app:ms_enableErrorLabel="true"
+                app:ms_enableFloatingLabel="true"
+                app:ms_hint="@string/marital_status">
+
+            </fr.ganfra.materialspinner.MaterialSpinner>
+
+            <ImageView
+                android:id="@+id/img_register_fingerprint"
+                android:layout_width="@dimen/fingerprint_image_width"
+                android:layout_height="@dimen/fingerprint_image_height"
+                android:layout_marginTop="@dimen/view_margin_l"
+                android:contentDescription="@string/fingerprint_image"
+                android:enabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spn_marital"
+                app:srcCompat="?android:attr/fingerprintAuthDrawable" />
+
+            <ImageView
+                android:id="@+id/img_registration_status"
+                android:layout_width="@dimen/check_image_width"
+                android:layout_height="@dimen/check_image_height"
+                android:layout_marginStart="@dimen/view_margin"
+                android:contentDescription="@string/fingerprint_verification_image"
+                android:tint="@color/lightGreen"
+                android:visibility="@{model.memberDetails.fields.hasFingerprint ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@+id/img_register_fingerprint"
+                app:layout_constraintStart_toEndOf="@+id/img_register_fingerprint"
+                app:layout_constraintTop_toTopOf="@+id/img_register_fingerprint"
+                app:srcCompat="@drawable/ic_check" />
+
+            <TextView
+                android:id="@+id/txt_register_fingerprint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/view_margin"
+                android:layout_marginTop="@dimen/view_margin"
+                android:layout_marginEnd="@dimen/view_margin"
+                android:drawablePadding="@dimen/view_margin"
+                android:text="@string/register_fingerprints"
+                android:textSize="@dimen/normal_text_size"
+                app:error="@{model.memberDetails.templateError}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_register_fingerprint" />
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/view_margin"
+                android:layout_marginTop="@dimen/view_margin_l"
+                android:layout_marginEnd="@dimen/view_margin"
+                android:layout_marginBottom="@dimen/layout_margin"
+                android:text="@string/save"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_register_fingerprint" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</layout>

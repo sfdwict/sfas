@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="org.sdfw.biometric.viewmodel.FingerprintRegistrationViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.FingerprintRegistrationActivity">
+
+        <ImageView
+            android:id="@+id/img_left_hand"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin"
+            android:layout_marginBottom="@dimen/view_margin"
+            app:layout_constraintBottom_toTopOf="@+id/txt_left_hand"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.43"
+            app:srcCompat="@drawable/hand_left" />
+
+        <ImageView
+            android:id="@+id/img_right_hand"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/layout_margin"
+            android:layout_marginEnd="@dimen/layout_margin"
+            android:layout_marginBottom="@dimen/view_margin"
+            app:layout_constraintBottom_toTopOf="@id/txt_right_hand"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.43"
+            app:srcCompat="@drawable/hand_right" />
+
+        <ImageView
+            android:id="@+id/img_fingerprint"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="template"
+            app:layout_constraintBottom_toBottomOf="@+id/img_left_hand"
+            app:layout_constraintEnd_toStartOf="@id/img_right_hand"
+            app:layout_constraintStart_toEndOf="@id/img_left_hand"
+            app:layout_constraintTop_toTopOf="@id/img_left_hand"
+            app:srcCompat="?android:attr/fingerprintAuthDrawable" />
+
+        <TextView
+            android:id="@+id/txt_left_hand"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/view_margin_s"
+            android:gravity="center_horizontal"
+            android:text="@string/left_hand"
+            app:layout_constraintBottom_toTopOf="@id/txt_status_left_hand"
+            app:layout_constraintEnd_toStartOf="@+id/txt_left_index"
+            app:layout_constraintStart_toStartOf="@id/img_left_hand" />
+
+        <TextView
+            android:id="@+id/txt_left_index"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/index_finger"
+            app:layout_constraintBottom_toBottomOf="@id/txt_left_hand"
+            app:layout_constraintEnd_toStartOf="@+id/txt_left_thumb"
+            app:layout_constraintStart_toEndOf="@+id/txt_left_hand"
+            app:layout_constraintTop_toTopOf="@id/txt_left_hand" />
+
+        <TextView
+            android:id="@+id/txt_left_thumb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/thumb_finger"
+            app:layout_constraintBottom_toBottomOf="@id/txt_left_hand"
+            app:layout_constraintEnd_toStartOf="@+id/img_fingerprint"
+            app:layout_constraintStart_toEndOf="@+id/txt_left_index"
+            app:layout_constraintTop_toTopOf="@id/txt_left_hand" />
+
+        <TextView
+            android:id="@+id/txt_status_left_hand"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/view_margin"
+            android:background="@drawable/border"
+            android:gravity="center_horizontal"
+            android:text="@string/status"
+            app:layout_constraintBottom_toTopOf="@id/btn_confirm"
+            app:layout_constraintEnd_toStartOf="@+id/txt_status_left_index"
+            app:layout_constraintStart_toStartOf="@+id/txt_left_hand" />
+
+        <TextView
+            android:id="@+id/txt_status_left_index"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:gravity="center_horizontal"
+            android:text="@{model.fingerprintRegistrationForm.template1}"
+            app:layout_constraintBottom_toBottomOf="@id/txt_status_left_hand"
+            app:layout_constraintEnd_toStartOf="@+id/txt_status_left_thumb"
+            app:layout_constraintStart_toEndOf="@+id/txt_status_left_hand"
+            app:layout_constraintTop_toTopOf="@id/txt_status_left_hand" />
+
+        <TextView
+            android:id="@+id/txt_status_left_thumb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:gravity="center_horizontal"
+            android:text="@{model.fingerprintRegistrationForm.template2}"
+            app:layout_constraintBottom_toBottomOf="@id/txt_status_left_hand"
+            app:layout_constraintEnd_toEndOf="@id/txt_left_thumb"
+            app:layout_constraintStart_toEndOf="@+id/txt_status_left_index"
+            app:layout_constraintTop_toTopOf="@id/txt_status_left_hand" />
+
+        <TextView
+            android:id="@+id/txt_right_hand"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/view_margin_s"
+            android:gravity="center_horizontal"
+            android:text="@string/right_hand"
+            app:layout_constraintBottom_toTopOf="@id/txt_status_right_hand"
+            app:layout_constraintEnd_toStartOf="@+id/txt_right_thumb"
+            app:layout_constraintStart_toStartOf="@id/img_right_hand" />
+
+        <TextView
+            android:id="@+id/txt_right_thumb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/thumb_finger"
+            app:layout_constraintBottom_toBottomOf="@id/txt_right_hand"
+            app:layout_constraintEnd_toStartOf="@+id/txt_right_index"
+            app:layout_constraintStart_toEndOf="@+id/txt_right_hand"
+            app:layout_constraintTop_toTopOf="@id/txt_right_hand" />
+
+        <TextView
+            android:id="@+id/txt_right_index"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/index_finger"
+            app:layout_constraintBottom_toBottomOf="@id/txt_right_hand"
+            app:layout_constraintEnd_toEndOf="@id/img_right_hand"
+            app:layout_constraintStart_toEndOf="@+id/txt_right_thumb"
+            app:layout_constraintTop_toTopOf="@id/txt_right_hand" />
+
+        <TextView
+            android:id="@+id/txt_status_right_hand"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/view_margin"
+            android:background="@drawable/border"
+            android:gravity="center_horizontal"
+            android:text="@string/status"
+            app:layout_constraintBottom_toTopOf="@id/btn_confirm"
+            app:layout_constraintEnd_toStartOf="@+id/txt_status_right_thumb"
+            app:layout_constraintStart_toStartOf="@+id/txt_right_hand" />
+
+        <TextView
+            android:id="@+id/txt_status_right_thumb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:gravity="center_horizontal"
+            android:text="@{model.fingerprintRegistrationForm.template3}"
+            app:layout_constraintBottom_toBottomOf="@id/txt_status_right_hand"
+            app:layout_constraintEnd_toStartOf="@+id/txt_status_right_index"
+            app:layout_constraintStart_toEndOf="@+id/txt_status_right_hand"
+            app:layout_constraintTop_toTopOf="@id/txt_status_right_hand" />
+
+        <TextView
+            android:id="@+id/txt_status_right_index"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:gravity="center_horizontal"
+            android:text="@{model.fingerprintRegistrationForm.template4}"
+            app:layout_constraintBottom_toBottomOf="@id/txt_status_right_hand"
+            app:layout_constraintEnd_toEndOf="@id/txt_right_index"
+            app:layout_constraintStart_toEndOf="@+id/txt_status_right_thumb"
+            app:layout_constraintTop_toTopOf="@id/txt_status_right_hand" />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/view_margin_l"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:enabled="@{model.fingerprintRegistrationForm.enabled}"
+            android:text="@string/save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/btn_left_index"
+            android:layout_width="@dimen/marker_dimen"
+            android:layout_height="@dimen/marker_dimen"
+            android:background="@drawable/bg_circle"
+            android:button="@null"
+            app:layout_constraintBottom_toBottomOf="@+id/img_left_hand"
+            app:layout_constraintEnd_toEndOf="@+id/img_left_hand"
+            app:layout_constraintHorizontal_bias="0.551"
+            app:layout_constraintStart_toStartOf="@+id/img_left_hand"
+            app:layout_constraintTop_toTopOf="@+id/img_left_hand"
+            app:layout_constraintVertical_bias="0.053" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/btn_left_thumb"
+            android:layout_width="@dimen/marker_dimen"
+            android:layout_height="@dimen/marker_dimen"
+            android:background="@drawable/bg_circle"
+            android:button="@null"
+            app:layout_constraintBottom_toBottomOf="@+id/img_left_hand"
+            app:layout_constraintEnd_toEndOf="@+id/img_left_hand"
+            app:layout_constraintHorizontal_bias="0.716"
+            app:layout_constraintStart_toStartOf="@+id/img_left_hand"
+            app:layout_constraintTop_toTopOf="@+id/img_left_hand"
+            app:layout_constraintVertical_bias="0.65" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/btn_right_thumb"
+            android:layout_width="@dimen/marker_dimen"
+            android:layout_height="@dimen/marker_dimen"
+            android:background="@drawable/bg_circle"
+            android:button="@null"
+            app:layout_constraintBottom_toBottomOf="@+id/img_right_hand"
+            app:layout_constraintEnd_toEndOf="@+id/img_right_hand"
+            app:layout_constraintHorizontal_bias="0.285"
+            app:layout_constraintStart_toStartOf="@+id/img_right_hand"
+            app:layout_constraintTop_toTopOf="@+id/img_right_hand"
+            app:layout_constraintVertical_bias="0.65"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/btn_right_index"
+            android:layout_width="@dimen/marker_dimen"
+            android:layout_height="@dimen/marker_dimen"
+            android:background="@drawable/bg_circle"
+            android:button="@null"
+            app:layout_constraintBottom_toBottomOf="@+id/img_right_hand"
+            app:layout_constraintEnd_toEndOf="@+id/img_right_hand"
+            app:layout_constraintHorizontal_bias="0.449"
+            app:layout_constraintStart_toStartOf="@+id/img_right_hand"
+            app:layout_constraintTop_toTopOf="@+id/img_right_hand"
+            app:layout_constraintVertical_bias="0.052"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="member"
+            type="org.sdfw.biometric.model.MemberLite" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/bg_old_member"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="@dimen/padding_s">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txt_id"
+                style="@style/GridTextViewStyleMedium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{member.memberId}"
+                app:layout_constraintBottom_toTopOf="@+id/txt_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="101" />
+
+            <TextView
+                android:id="@+id/txt_name"
+                style="@style/GridTextViewStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_s"
+                android:text="@{member.memberName}"
+                app:layout_constraintBottom_toTopOf="@+id/layout_flags"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_id"
+                tools:text="Amena Khatun" />
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/layout_flags"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_s"
+                android:background="@drawable/bg_grid_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_name">
+
+                <ImageView
+                    android:id="@+id/img_fingerprint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_xs"
+                    android:src="@{member.hasFingerprint ? @drawable/ic_check : @drawable/ic_uncheck}"
+                    android:tint="@color/lightRed"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/img_image"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@drawable/ic_check" />
+
+                <ImageView
+                    android:id="@+id/img_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_xs"
+                    android:src="@{member.hasImage ? @drawable/ic_check : @drawable/ic_uncheck}"
+                    android:tint="@color/lightGreen"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/img_nid"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/img_fingerprint"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/ic_check" />
+
+                <ImageView
+                    android:id="@+id/img_nid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_xs"
+                    android:src="@{member.hasVoterId ? @drawable/ic_check : @drawable/ic_uncheck}"
+                    android:tint="@color/lightBlue"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/img_image"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/ic_uncheck" />
+
+            </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
+
+    </FrameLayout>
+
+</layout>

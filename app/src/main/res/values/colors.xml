@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorSecondary">#134593</color>
+    <color name="colorButton">#333333</color>
+    <color name="colorMarkerSemiTransparent">#AAD81B60</color>
+    <color name="green">#008000</color>
+    <color name="lightGrey">#CCCCCC</color>
+    <color name="lightRed">#990000</color>
+    <color name="lightGreen">#4C9900</color>
+    <color name="lightBlue">#009999</color>
+    <color name="memberItem">#4a80af</color>
+</resources>

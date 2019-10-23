@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="org.sdfw.biometric.viewmodel.LoanDisbursementDetailsViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.LoanDisbursementDetailsActivity">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/form_layout_left_margin" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/form_layout_right_margin" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageViewProfile"
+                android:layout_width="@dimen/details_profile_pic_width"
+                android:layout_height="@dimen/details_profile_pic_height"
+                android:layout_marginTop="@dimen/layout_margin"
+                android:contentDescription="@string/profile_image"
+                app:civ_border_color="@android:color/darker_gray"
+                app:civ_border_width="@dimen/circular_image_border_width"
+                app:imgData="@{model.loanDisbursementForm.fields.image}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_center_no"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin"
+                app:error="@{model.loanDisbursementForm.centerIdError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewProfile">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_center_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/center_no"
+                    android:inputType="textNoSuggestions"
+                    android:text="@={model.loanDisbursementForm.fields.centerId}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_member_no"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:error="@{model.loanDisbursementForm.memberIdError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_center_no">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_member_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/member_no"
+                    android:inputType="numberDecimal"
+                    android:text="@={model.loanDisbursementForm.fields.memberId}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_member_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:error="@{model.loanDisbursementForm.memberNameError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_member_no">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_member_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/member_name"
+                    android:inputType="textPersonName"
+                    android:text="@={model.loanDisbursementForm.fields.memberName}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_parent_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:error="@{model.loanDisbursementForm.parentError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_member_name">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_parent_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/spouse_name"
+                    android:inputType="textPersonName"
+                    android:text="@={model.loanDisbursementForm.fields.spouseName}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_nid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:error="@{model.loanDisbursementForm.nidNumberError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_parent_name">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_nid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/nid_no"
+                    android:inputType="textPersonName"
+                    android:text="@={model.loanDisbursementForm.fields.voterId}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_mobile_no"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:error="@{model.loanDisbursementForm.mobileNumberError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_nid">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_mobile_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/mobile_no"
+                    android:inputType="phone"
+                    android:text="@={model.loanDisbursementForm.fields.mobileNo}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_dps_amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:error="@{model.loanDisbursementForm.disbursementAmountError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_mobile_no">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_spent_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/spent_amount"
+                    android:inputType="numberDecimal"
+                    android:text="@={model.loanDisbursementForm.disbursementAmount}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_passbook_no"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_l"
+                app:error="@{model.loanDisbursementForm.passbookNoError}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/til_dps_amount">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_passbook_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/passbook_no"
+                    android:inputType="text"
+                    android:text="@={model.loanDisbursementForm.fields.passbookNo}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/ivFingerprintVerify"
+                android:layout_width="@dimen/fingerprint_image_width"
+                android:layout_height="@dimen/fingerprint_image_height"
+                android:layout_marginTop="32dp"
+                android:contentDescription="@string/fingerprint_image"
+                android:enabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_passbook_no"
+                app:srcCompat="?android:attr/fingerprintAuthDrawable" />
+
+            <ImageView
+                android:id="@+id/ivFingerprintStatus"
+                android:layout_width="@dimen/check_image_width"
+                android:layout_height="@dimen/check_image_height"
+                android:layout_marginStart="@dimen/view_margin"
+                android:contentDescription="@string/fingerprint_verification_image"
+                android:src="@drawable/check_circle"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/ivFingerprintVerify"
+                app:layout_constraintStart_toEndOf="@+id/ivFingerprintVerify"
+                app:layout_constraintTop_toTopOf="@+id/ivFingerprintVerify" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/view_margin"
+                android:layout_marginTop="@dimen/view_margin"
+                android:layout_marginEnd="@dimen/view_margin"
+                android:text="@string/check_fingerprint"
+                android:textSize="@dimen/normal_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivFingerprintVerify" />
+
+            <Button
+                android:id="@+id/btn_send_server"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/view_margin"
+                android:layout_marginTop="@dimen/view_margin_l"
+                android:layout_marginEnd="@dimen/view_margin"
+                android:layout_marginBottom="@dimen/layout_margin"
+                android:enabled="false"
+                android:onClick="@{() -> model.onSendServerClick()}"
+                android:text="@string/send_to_server"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+</layout>

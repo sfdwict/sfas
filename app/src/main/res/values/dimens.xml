@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="layout_margin">24dp</dimen>
+    <dimen name="view_margin_xs">2dp</dimen>
+    <dimen name="view_margin_s">4dp</dimen>
+    <dimen name="view_margin">8dp</dimen>
+    <dimen name="view_margin_l">16dp</dimen>
+    <dimen name="view_margin_xl">24dp</dimen>
+    <dimen name="marker_dimen">48dp</dimen>
+    <dimen name="padding_xs">2dp</dimen>
+    <dimen name="padding_s">4dp</dimen>
+    <dimen name="padding">8dp</dimen>
+    <dimen name="padding_l">16dp</dimen>
+    <dimen name="corner_radius">4dp</dimen>
+    <dimen name="elevation">8dp</dimen>
+    <dimen name="grid_spacing">2dp</dimen>
+    <dimen name="text_s">10sp</dimen>
+    <dimen name="text_m">16sp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="normal_text_size">16sp</dimen>
+    <dimen name="details_profile_pic_height">150dp</dimen>
+    <dimen name="details_profile_pic_width">150dp</dimen>
+    <dimen name="form_layout_left_margin">40dp</dimen>
+    <dimen name="form_layout_right_margin">40dp</dimen>
+    <dimen name="circular_image_border_width">1dp</dimen>
+    <dimen name="fingerprint_image_width">64dp</dimen>
+    <dimen name="fingerprint_image_height">64dp</dimen>
+    <dimen name="item_image_dimen">64dp</dimen>
+    <dimen name="item_image_dimen_medium">48dp</dimen>
+    <dimen name="check_image_width">24dp</dimen>
+    <dimen name="check_image_height">24dp</dimen>
+    <dimen name="badge_dimen">24dp</dimen>
+</resources>
