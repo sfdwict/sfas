@@ -83,4 +83,6 @@ dependencies {
 
     //Force Updater
     implementation 'com.github.javiersantos:AppUpdater:2.7'
+
+
 }

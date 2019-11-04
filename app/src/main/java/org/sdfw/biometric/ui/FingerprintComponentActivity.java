@@ -113,19 +113,10 @@ public abstract class FingerprintComponentActivity extends DaggerDialogActivity 
         setContentView();
         setupDialog();
         setupViewModel(savedInstanceState);
-        checkForUpdate();
+
     }
 
-    private void checkForUpdate() {
-        AppUpdater appUpdater = new AppUpdater(getApplicationContext())
-                .setDisplay(Display.DIALOG)
-                .setUpdateFrom(UpdateFrom.GOOGLE_PLAY)
-                .setButtonDoNotShowAgain(null)
-                .setButtonDismiss(null)
-                .setCancelable(false)
-                ;
-        appUpdater.start();
-    }
+
 
     @Override
     protected void onStart() {

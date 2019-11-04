@@ -79,7 +79,7 @@ public class FingerprintAuthViewModel extends ViewModel implements OnResponseErr
     public void authenticate() {
         Log.d(TAG, "authenticate: called");
         compositeDisposable.clear();
-        /*compositeDisposable.add(findUser(fingerprintAuth.getFields().getUserId())
+       /* compositeDisposable.add(findUser(fingerprintAuth.getFields().getUserId())
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.computation())
                 .subscribe(user -> {

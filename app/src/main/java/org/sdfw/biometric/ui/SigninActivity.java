@@ -9,6 +9,10 @@ import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.github.javiersantos.appupdater.AppUpdater;
+import com.github.javiersantos.appupdater.enums.Display;
+import com.github.javiersantos.appupdater.enums.UpdateFrom;
+
 import org.sdfw.biometric.R;
 import org.sdfw.biometric.databinding.ActivitySigninBinding;
 import org.sdfw.biometric.network.response.MessageResponse;
@@ -38,8 +42,19 @@ public class SigninActivity extends DaggerDialogActivity {
         setupViewModel(savedInstanceState);
         observeValidationStatus();
         observeSigninStatus();
+        checkForUpdate();
     }
 
+    private void checkForUpdate() {
+        AppUpdater appUpdater = new AppUpdater(getApplicationContext())
+                .setDisplay(Display.DIALOG)
+                .setUpdateFrom(UpdateFrom.GOOGLE_PLAY)
+                .setButtonDoNotShowAgain(null)
+                .setButtonDismiss(null)
+                .setCancelable(false)
+                ;
+        appUpdater.start();
+    }
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
